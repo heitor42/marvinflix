@@ -12,7 +12,7 @@ function Menu() {
                 <img className="Logo" alt="MarvinFlix logo" src={Logo} />
             </Link>
 
-            <Button as={Link} className="ButtonLink" to="/sera/que">
+            <Button as={Link} className="ButtonLink" to="/cadastro/video">
                 Novo video
             </Button>
         </nav>
