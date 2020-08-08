@@ -3,11 +3,11 @@ import PageDefault from '../../components/PageDefault';
 
 function Marvin () {
     return (
-        <div>
+        <>
             <PageDefault>
-                <p>- esta tudo tam ... Ah deixa pra la!!!</p>
+                - esta tudo tam ... Ah deixa pra la!!!
             </PageDefault>
-        </div>
+        </>
     )
 }
 
