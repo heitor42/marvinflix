@@ -3,7 +3,7 @@ import React from 'react';
 import dadosIniciais from '../../data/dados_iniciais.json';
 import PageDefault from '../../components/PageDefault';
 import BannerMain from '../../components/BannerMain';
-import Carousel from '../../components/Carousel';
+import Carrossel from '../../components/Carrossel';
 
 function Home() {
     return (
@@ -15,10 +15,9 @@ function Home() {
         />
 
         {dadosIniciais.categorias.map((categoria) => {
-          console.log(categoria);
           if (categoria.titulo === "Front End"){
             return(
-              <Carousel 
+              <Carrossel 
                 ignoreFirstVideo
                 key={categoria.titulo}
                 category={categoria} 
@@ -27,7 +26,7 @@ function Home() {
           }
 
           return(
-            <Carousel 
+            <Carrossel 
               key={categoria.titulo}
               category={categoria} 
             />
