@@ -5,9 +5,9 @@ import PageDefault from '../../../components/PageDefault';
 function CadastroCategoria() {
   const [categories, setCategories] = useState([]);
   const [newCategory, setNewCategory] = useState({
-    Name: 'teste',
-    Description: 'description',
-    Color: 'red'
+    name: '',
+    description: '',
+    color: ''
   });
   
   function handleSubmit(eventInfo) {
@@ -16,8 +16,12 @@ function CadastroCategoria() {
       setCategories([
         ...categories, newCategory
       ])
-    
-    // alert('Categoria existente!')
+
+    setValue({
+      name: '',
+      description: '',
+      color: ''
+    })    
   }
 
   function setValue(key, value) {
@@ -27,9 +31,18 @@ function CadastroCategoria() {
     })
   }
 
+  function handleChange(eventInfo) {
+    const { value } = eventInfo.target;
+
+    setValue(
+      eventInfo.target.getAttribute('name'),
+      value
+     )
+  }
+
   return (
     <PageDefault>
-      <h1>Cadastro de Categoria: {newCategory.Name}</h1>
+      <h1>Cadastro de Categoria: {newCategory.name}</h1>
 
       <form onSubmit={handleSubmit}>
         <div>
@@ -37,23 +50,21 @@ function CadastroCategoria() {
             Nome da Categoria:
             <input
               type="text"
-              value={newCategory.Name}
-              onChange={(eventInfo) => {
-                 setValue('Name',eventInfo.target.value)
-              }}
+              name='name'
+              value={newCategory.name}
+              onChange={handleChange}
             />
           </label>
         </div>
-        
+
         <div>      
           <label>
             Descrição:
             <textarea
               type="text"
-              value={newCategory.Description}
-              onChange={(eventInfo) => {
-                setValue('Description',eventInfo.target.value)
-              }}
+              name='description'
+              value={newCategory.description}
+              onChange={handleChange}
             />
           </label>
         </div>
@@ -63,10 +74,9 @@ function CadastroCategoria() {
             Cor:
             <input
               type="color"
-              value={newCategory.Color}
-              onChange={(eventInfo) => {
-                setValue('Color',eventInfo.target.value)
-              }}
+              name='color'
+              value={newCategory.color}
+              onChange={handleChange}
             />
           </label>
         </div>
@@ -80,9 +90,9 @@ function CadastroCategoria() {
         {categories.map((category, index) => (
           <li
             key={`${index}`}
-            style={{background: category.Color}}
+            style={{background: category.color}}
           >
-            {`${category.Name}: ${category.Description}`}
+            {`${category.name}: ${category.description}`}
           </li>
         ))}
       </ul>
